@@ -1,16 +1,43 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/logs/logs",
-    "pages/personal",
-    "pages/personal/personal",
+    "pages/diary/diary",
     "pages/order/order",
-    "pages/diary/diary"
+    "pages/personal/personal" 
   ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "WeChat",
+    "navigationBarTitleText": "更美",
     "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#000000",
+    "selectedColor": "#3ADBD2",
+    "list": [{
+      "pagePath": "pages/index/index",
+      "text": "美购",
+      "iconPath": "images/ic_menu_welfare_normal.png",
+      "selectedIconPath": "images/ic_menu_welfare_pressed.png"
+    
+    },
+    {
+      "pagePath": "pages/diary/diary",
+      "text": "日记",
+      "iconPath": "images/ic_menu_msg_normal.png",
+      "selectedIconPath": "images/ic_menu_msg_pressed.png"
+    },
+    {
+      "pagePath": "pages/order/order",
+      "text": "订单",
+      "iconPath": "images/ic_menu_community_normal.png",
+      "selectedIconPath": "images/ic_menu_community_pressed.png"
+    },
+    {
+      "pagePath": "pages/personal/personal",
+      "text": "我的",
+      "iconPath": "images/ic_menu_personal_normal.png",
+      "selectedIconPath": "images/ic_menu_personal_pressed.png"
+    }]
   }
 }

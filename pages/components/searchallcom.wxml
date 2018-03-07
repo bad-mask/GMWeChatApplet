@@ -1,0 +1,9 @@
+<!--pages/components/searchallcom.wxml-->
+<view class='search_wrapper'>
+
+  <view class='search_wrapper_content'>
+    <image src='images/ic_titlebar_search.png' class='search_wrapper_content_img'></image>
+    <view class='search_wrapper_content_text'>搜索项目/商品/专家</view>
+  </view>
+
+</view>
