@@ -1,7 +1,7 @@
 <!--index.wxml-->
 <view class="container">
  
-  <component-tag-name class="searchcom">
+  <component-tag-name class="searchcom" bindtap="onSearchCom">
   </component-tag-name>
 
 
