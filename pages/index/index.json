@@ -1,5 +1,5 @@
 {
   "usingComponents": {
-    "component-tag-name": "../components/searchallcom"
+    "component-tag-name": "../searchcom/searchallcom"
   }
 }

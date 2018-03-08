@@ -1,0 +1,21 @@
+<!--pages/components/filterbar/filterbar.wxml-->
+<template name="filterbar">
+
+  <view class='filterbar {{ animateCss }}' wx:if="{{visible}}">
+
+    <view class='filterbar_bg'>
+
+      <block wx:for="{{items}}" wx:key="">
+
+        <view class="filterbar_item {{item.checked ? 'filterbar_item--checked' : '' }}" bindtap='{{onClick}}' data-index='{{index}}'>
+          <text class='filterbar_text'>{{ item.label }}</text>
+          <text class="filterbar_icon  {{'filterbar_icon--' + item.type }}  {{ item.sort === 1 ? 'filterbar_icon--sort-asc' : item.sort === -1 ? 'filterbar_icon--sort-desc' : '' }}" wx:if="{{ item.type === 'radio' || item.type === 'checkbox' || item.type === 'sort' || item.type === 'filter' }}"></text>
+        </view>
+
+      </block>
+
+    </view>
+
+  </view>
+
+</template>
