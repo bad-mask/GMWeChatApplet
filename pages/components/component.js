@@ -92,7 +92,7 @@ class Component {
     //筛选函数类型
     if (!this.isEmptyObject(methods)) {
       for (let key in methods) {
-        if (methods.hasOwnproperty(ley) && typeof methods[key] === `function`) {
+        if (methods.hasOwnProperty(key) && typeof methods[key] === `function`) {
           this[key] = methods[key] = methods[key].bind(this)
 
           this.page[`${scope}.${key}`] = methods[key]

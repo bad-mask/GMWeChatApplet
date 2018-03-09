@@ -1,62 +1,116 @@
 //index.js
 //获取应用实例
-const app = getApp()
+import { $filterBar } from '../components/router'
 
 Page({
   data: {
-    // motto: 'Hello World',
-    // userInfo: {},
-    // hasUserInfo: false,
-    // canIUse: wx.canIUse('button.open-type.getUserInfo')
+    items: [
+      {
+      type: 'radio',
+      label: 'Updated',
+      value: 'updated',
+      children: [{
+        label: 'Recently updated',
+        value: 'desc',
+      },
+      {
+        label: 'Least recently updated',
+        value: 'asc',
+      },
+      ],
+      groups: ['001'],
+    },
+    {
+      type: 'text',
+      label: 'Forks',
+      value: 'forks',
+      groups: ['002'],
+    },
+    {
+      type: 'sort',
+      label: 'Stars',
+      value: 'stars',
+      groups: ['003'],
+    },
+    {
+      type: 'filter',
+      label: '筛选',
+      value: 'filter',
+    }
+    ]
   },
-  //事件处理函数
-  // bindViewTap: function() {
-  //   wx.navigateTo({
-  //     url: '../logs/logs'
-  //   })
-  // },
   onLoad: function () {
-    // if (app.globalData.userInfo) {
-    //   this.setData({
-    //     userInfo: app.globalData.userInfo,
-    //     hasUserInfo: true
-    //   })
-    // } else if (this.data.canIUse){
-    //   // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-    //   // 所以此处加入 callback 以防止这种情况
-    //   app.userInfoReadyCallback = res => {
-    //     this.setData({
-    //       userInfo: res.userInfo,
-    //       hasUserInfo: true
-    //     })
-    //   }
-    // } else {
-    //   // 在没有 open-type=getUserInfo 版本的兼容处理
-    //   wx.getUserInfo({
-    //     success: res => {
-    //       app.globalData.userInfo = res.userInfo
-    //       this.setData({
-    //         userInfo: res.userInfo,
-    //         hasUserInfo: true
-    //       })
-    //     }
-    //   })
-    // }
+    this.$filterBar = $filterBar.init({
+      items: this.data.items,
+      onChange: (checkedItems, items) => {
+        console.log(this, checkedItems, items)
+        
+        const params = {}
+
+        checkedItems.forEach((n) => {
+          if(n.checked){
+            if(n.value === 'update'){
+              const selected = n.children.filter((n) => n.checked).map((n) => n.value).join(' ')
+              params.sort = n.value
+              params.order = selected
+            }else if(n.value === 'stars'){
+              params.sort = n.value
+              params.order = n.sort === 1 ? 'asc' : 'desc'
+            }else if(n.value === 'forks'){
+              params.sort = n.value
+            }else if(n.value === 'filter'){
+              n.children.filter((n) => n.selected).forEach((n) => {
+                if(n.value === 'language'){
+                  const selected = n.children.filter((n) => n.checked).map((n) => n.value).join(' ')
+                  params.language = selected
+                }else if(n.value === 'query'){
+                  const selected = n.children.filter((n) => n.checked).map((n) => n.value).join(' ')
+                  params.query = selected
+                }
+              })
+            }
+          }
+        })
+
+        this.getRepos(params)
+      },
+    })
+    this.getRepos()
   },
-  // getUserInfo: function(e) {
-  //   console.log(e)
-  //   app.globalData.userInfo = e.detail.userInfo
-  //   this.setData({
-  //     userInfo: e.detail.userInfo,
-  //     hasUserInfo: true
-  //   })
-  // }
-  onSearchCom:function(e){
+  getRepos(params = {}){
+    const language = params.language || 'javascript'
+    const query = params.query || 'react'
+    const q = `${query}+language:${language}`
+    const data = Object.assign({
+      q,
+    }, params)
+
+    this.$filterBar.onCloseSelect()
+
+    wx.showLoading()
+    wx.request({
+      url: `http://api.github.com/search/repositories`,
+      data,
+      success: (res) => {
+        console.log(res)
+
+        wx.hideLoading()
+
+        this.setData({
+          repos: res.data.items.map((n) => Object.assign({}, n, {
+            date: n.created_at.substr(0, 7),
+          })),
+        })
+      },
+    })
+  },
+
+  onSearchCom: function (e) {
     wx.showToast({
       title: '点击了搜索框',
-      icon:'none',
-      duration:1000
+      icon: 'none',
+      duration: 1000
     })
-  }
+  },
 
 })

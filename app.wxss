@@ -1,4 +1,12 @@
 /**app.wxss**/
+/**
+* 全局样式表
+* 使用 @import 语句可以导入外联样式表，@import 后跟需要导入的外联样式表的相对路径，用「;」表示* 语句结束；
+* 如果需要增加额外的 WXSS 样式表，直接 import 即可，但需要注意引用顺序
+*/
+@import 'pages/components/filterbar/filterbar.wxss';
+
+
 .container {
   height: 100%;
   display: flex;

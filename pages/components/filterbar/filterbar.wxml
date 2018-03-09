@@ -1,9 +1,11 @@
 <!--pages/components/filterbar/filterbar.wxml-->
-<template name="filterbar">
+<template name="filterWelBar">
 
   <view class='filterbar {{ animateCss }}' wx:if="{{visible}}">
 
-    <view class='filterbar_bg'>
+    <view class='filterbar_top_border'></view>
+
+    <view class='filterbar_bd'>
 
       <block wx:for="{{items}}" wx:key="">
 
@@ -15,6 +17,8 @@
       </block>
 
     </view>
+
+    <view class='filterbar_bottom_border'></view>
 
   </view>
 
