@@ -67,7 +67,7 @@
   transform: scaleX(0.5) translateY(50%);
 }
 
-.filterbar_item--checkded{
+.filterbar_item--checked{
   color: #f15353;
 }
 
