@@ -11,4 +11,21 @@
       <template is="filterWelBar" data="{{...filterbar}}" />
   </view>
 
+  <!-- 美购列表 -->
+  <view class='welfare_body'>
+    <view class="grids grids-small" wx:if="{{ type === 'grid' }}" >
+        <block wx:for="{{components}}" wx:key="">
+          <navigator url="{{item.url}}" class="grid" >
+
+            <view class="grid_icon">
+              <image class='grid_img' src='{{item.service_img}}'>
+              </image>
+            </view>
+
+            <view class='grid_label'>{{ item.title }}</view>
+          </navigator>
+        </block>
+    </view>
+  </view>
+
 </view>
