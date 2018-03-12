@@ -21,13 +21,14 @@
 }
 
 .welfare_body {
-  padding: 35px 0;
+  padding-top: 35px;
 }
 
 .grids {
   position: relative;
   overflow: hidden;
-  background-color: #fff;
+  background-color: #d9d9d9;
+  padding: 40rpx 20rpx;
 }
 
 .grids:before {
@@ -49,7 +50,7 @@
 .grid {
   position: relative;
   float: left;
-  padding: 20px 10px;
+  padding: 5px 5px;
   width: 50%;
   box-sizing: border-box;
   text-decoration: none;
@@ -57,37 +58,7 @@
 
 .grids-small .grid {
   width: 50%;
-  padding: 15px 8px;
-}
-
-.grid:before {
-  content: " ";
-  position: absolute;
-  right: 0;
-  top: 0;
-  width: 1px;
-  height: 100%;
-  border-right: 1px solid #d9d9d9;
-  color: #d9d9d9;
-  -webkit-transform-origin: 100% 0;
-  transform-origin: 100% 0;
-  -webkit-transform: scaleX(0.5);
-  transform: scaleX(0.5);
-}
-
-.grid:after {
-  content: " ";
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  height: 1px;
-  border-bottom: 1px solid #d9d9d9;
-  color: #d9d9d9;
-  -webkit-transform-origin: 0 100%;
-  transform-origin: 0 100%;
-  -webkit-transform: scaleY(0.5);
-  transform: scaleY(0.5);
+  padding: 5px 5px;
 }
 
 .grid_icon {
@@ -101,6 +72,8 @@
   display: block;
   width: 100%;
   height: 100%;
+  border-top-left-radius: 7rpx;
+  border-top-right-radius: 7rpx;
 }
 
 .grid_label {
@@ -111,13 +84,20 @@
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
   overflow: hidden;
+  background-color: #fff;
+  padding-left: 10rpx;
+  padding-right: 10rpx;
 }
 
 .grid_welfare_detail {
   display: block;
-  width: 100%;
-  height: 100%;
   position: relative;
+  background-color: #fff;
+  padding-bottom: 20rpx;
+  padding-left: 10rpx;
+  padding-right: 10rpx;
+  border-bottom-left-radius: 7rpx;
+  border-bottom-right-radius: 7rpx;
 }
 
 .grid_welfare_price_tag {

@@ -22,7 +22,7 @@
             </image>
           </view>
 
-          <block>
+          <block class='grid_welfare'>
             <view class='grid_label'>{{ item.title }}</view>
             <view class='grid_welfare_detail'>
               <view class='grid_welfare_price_tag' style=' color: #FF7096; font-size: 8px;'>¥</view>
