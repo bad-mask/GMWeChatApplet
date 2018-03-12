@@ -6,37 +6,32 @@ Page({
   data: {
     items: [
       {
-      type: 'radio',
-      label: 'Updated',
-      value: 'updated',
-      children: [{
-        label: 'Recently updated',
-        value: 'desc',
+        type: 'radio',
+        label: 'Updated',
+        value: 'updated',
+        children: [{
+          label: 'Recently updated',
+          value: 'desc',
+        },
+        {
+          label: 'Least recently updated',
+          value: 'asc',
+        },
+        ],
+        groups: ['001'],
       },
       {
-        label: 'Least recently updated',
-        value: 'asc',
+        type: 'text',
+        label: 'Forks',
+        value: 'forks',
+        groups: ['002'],
       },
-      ],
-      groups: ['001'],
-    },
-    {
-      type: 'text',
-      label: 'Forks',
-      value: 'forks',
-      groups: ['002'],
-    },
-    {
-      type: 'sort',
-      label: 'Stars',
-      value: 'stars',
-      groups: ['003'],
-    },
-    {
-      type: 'filter',
-      label: '筛选',
-      value: 'filter',
-    }
+      {
+        type: 'sort',
+        label: 'Stars',
+        value: 'stars',
+        groups: ['003'],
+      }
     ]
   },
   onLoad: function () {
@@ -44,26 +39,26 @@ Page({
       items: this.data.items,
       onChange: (checkedItems, items) => {
         console.log(this, checkedItems, items)
-        
+
         const params = {}
 
         checkedItems.forEach((n) => {
-          if(n.checked){
-            if(n.value === 'update'){
+          if (n.checked) {
+            if (n.value === 'update') {
               const selected = n.children.filter((n) => n.checked).map((n) => n.value).join(' ')
               params.sort = n.value
               params.order = selected
-            }else if(n.value === 'stars'){
+            } else if (n.value === 'stars') {
               params.sort = n.value
               params.order = n.sort === 1 ? 'asc' : 'desc'
-            }else if(n.value === 'forks'){
+            } else if (n.value === 'forks') {
               params.sort = n.value
-            }else if(n.value === 'filter'){
+            } else if (n.value === 'filter') {
               n.children.filter((n) => n.selected).forEach((n) => {
-                if(n.value === 'language'){
+                if (n.value === 'language') {
                   const selected = n.children.filter((n) => n.checked).map((n) => n.value).join(' ')
                   params.language = selected
-                }else if(n.value === 'query'){
+                } else if (n.value === 'query') {
                   const selected = n.children.filter((n) => n.checked).map((n) => n.value).join(' ')
                   params.query = selected
                 }
@@ -77,7 +72,7 @@ Page({
     })
     this.getRepos()
   },
-  getRepos(params = {}){
+  getRepos(params = {}) {
     const language = params.language || 'javascript'
     const query = params.query || 'react'
     const q = `${query}+language:${language}`

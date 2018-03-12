@@ -22,4 +22,22 @@
 
   </view>
 
+
+
+  <block wx:for="{{ items }}" wx:key="">
+
+      <view class="cells cells--pos" hidden="{{ !item.visible }}" wx:if="{{ item.type === 'radio' }}">
+        <radio-group name="{{ item.value }}" bindchange="{{ radioChange }}" data-index="{{ index }}" data-item="{{ item }}">
+          <label class="cell check_label" wx:for="{{ item.children }}" wx:for-item="p" wx:key="{{ item.value }}">
+            <radio class="check" value="{{ p.value }}" checked="{{ p.checked }}" />
+            <view class="cell_bd">{{ p.label }}</view>
+            <view class="cell_ft cell_ft--in-radio" wx:if="{{ p.checked }}">
+              <icon class="icon-radio" type="success_no_circle" size="16"></icon>
+            </view>
+          </label>
+        </radio-group>
+      </view>
+
+</block>
+
 </template>

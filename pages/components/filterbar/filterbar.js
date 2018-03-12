@@ -34,6 +34,19 @@ export default{
           this.onOpenSelect(this.page.data.filterbar.items,index)
         },
         /**
+         * 下拉框内单项选择触发 change 事件
+         */
+        radioChange(e){
+          const {value} = e.detail
+          const {index, item} = e.currentTarget.dataset
+          const children = item.children.map((n) => Object.assign({}, n, {
+            checked: n.value == value,
+          }))
+          this.setData({
+            [`filterbar.items[${index}].children`]:children,
+          }, this.onChange)
+        },
+        /**
          * 打开下拉框
          */
         onOpenSelect(data = [], index = 0){
@@ -60,7 +73,7 @@ export default{
 
                     if(['filter'].includes(n.type)){
                       params.children = params.children.map((n) => {
-                        return Object.assign({}, m, {
+                        return Object.assign({}, n, {
                           children:n.children.map((m) => Object.assign({}, m, {
                             checked:false,
                           })),
