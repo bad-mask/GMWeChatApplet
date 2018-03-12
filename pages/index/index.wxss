@@ -1,37 +1,36 @@
 /**index.wxss**/
-.container{
+
+.container {
   width: 100%;
   height: 100%;
-  background: #aabbff;
   position: absolute;
   padding: 0;
 }
 
-.searchcom{
+.searchcom {
   width: 100%;
   height: 100%;
   top: 0;
 }
 
-.filtercom{
+.filtercom {
   width: 100%;
   height: 100%;
   position: absolute;
   top: 104rpx;
 }
 
-.welfare_body{
+.welfare_body {
   padding: 35px 0;
 }
 
-.grids{
+.grids {
   position: relative;
   overflow: hidden;
-  background-color:#fff; 
+  background-color: #fff;
 }
 
-
-.grids:before{
+.grids:before {
   content: " ";
   position: absolute;
   box-sizing: border-box;
@@ -39,15 +38,15 @@
   top: 0;
   width: 200%;
   height: 200%;
-  border: 1px solid #D9D9D9;
-  color: #D9D9D9;
+  border: 1px solid #d9d9d9;
+  color: #d9d9d9;
   -webkit-transform-origin: 0 0;
   transform-origin: 0 0;
-  -webkit-transform: scale(.5);
-  transform: scale(.5);
+  -webkit-transform: scale(0.5);
+  transform: scale(0.5);
 }
 
-.grid{
+.grid {
   position: relative;
   float: left;
   padding: 20px 10px;
@@ -56,56 +55,92 @@
   text-decoration: none;
 }
 
-.grids-small .grid{
+.grids-small .grid {
   width: 50%;
   padding: 15px 8px;
 }
-.grid:before{
+
+.grid:before {
   content: " ";
   position: absolute;
   right: 0;
   top: 0;
   width: 1px;
   height: 100%;
-  border-right: 1px solid #D9D9D9;
-  color: #D9D9D9;
+  border-right: 1px solid #d9d9d9;
+  color: #d9d9d9;
   -webkit-transform-origin: 100% 0;
   transform-origin: 100% 0;
   -webkit-transform: scaleX(0.5);
-  transform: scaleX(.5);
+  transform: scaleX(0.5);
 }
 
-.grid:after{
+.grid:after {
   content: " ";
   position: absolute;
   left: 0;
   bottom: 0;
   width: 100%;
   height: 1px;
-  border-bottom: 1px solid #D9D9D9;
-  color: #D9D9D9;
+  border-bottom: 1px solid #d9d9d9;
+  color: #d9d9d9;
   -webkit-transform-origin: 0 100%;
   transform-origin: 0 100%;
-  -webkit-transform: scaleY(.5);
-  transform: scaleY(.5);
+  -webkit-transform: scaleY(0.5);
+  transform: scaleY(0.5);
 }
 
-.grid_icon{
+.grid_icon {
   display: block;
-  width: 100%;
-  height: 100%;
   margin: 0 auto;
+  width: 100%;
+  height: 300rpx;
 }
 
-.grid_icon .grid_img{
+.grid_icon .grid_img {
   display: block;
   width: 100%;
   height: 100%;
 }
 
-.grid_label{
-  display: block;
-  text-align: center;
+.grid_label {
+  text-align: left;
   color: #000;
   font-size: 14px;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+
+.grid_welfare_detail {
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.grid_welfare_price_tag {
+  display: inline;
+  left: 64rpx;
+}
+
+.grid_welfare_price {
+  display: inline;
+  position: relative;
+  left: 4rpx;
+  color: #ff7096;
+  font-size: 18px;
+}
+
+.grid_welfare_price_up {
+  display: inline;
+  position: relative;
+  left: 4rpx;
+}
+
+.grid_welfare_sell_amount {
+  position: relative;
+  float: right;
+  top: 10rpx;
 }
