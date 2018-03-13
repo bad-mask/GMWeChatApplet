@@ -70,40 +70,29 @@ export default{
                         checked:false,
                       }))
                     }
-
-                    if(['filter'].includes(n.type)){
-                      params.children = params.children.map((n) => {
-                        return Object.assign({}, n, {
-                          children:n.children.map((m) => Object.assign({}, m, {
-                            checked:false,
-                          })),
-                          selected:'',
-                        })
-                      })
-                    }
                   }
 
-                  if (['sort'.includes(n.type)]) {
-                    params.sort = undefined
+                  if (['radio'].includes(n.type)) {
+                    params.radio = undefined
                   }
                 }
               }
 
               //展开或隐藏下拉框
-              if (['radio', 'checkbox', 'filter'].includes(n.type)) {
+              if (['radio', 'checkbox'].includes(n.type)) {
                 params.visible = index === i ? !n.visible : false
               }
 
               //当前点击排序做出处理
-              if (index === i && ['sort'].includes(n.type)) {
-                params.sort = typeof params.sort === 'number' ? -params.sort : 1
+              if (index === i && ['radio'].includes(n.type)) {
+                params.radio = typeof params.radio === 'number' ? -params.radio : 1
               }
 
               return params
             })
 
             this.setData({[`filterbar.items`]: items,},  () => {
-                if( !['radio','checkbox','filter'].includes(current.type)){
+                if( !['radio'].includes(current.type)){
                   this.onChange()
                 } 
             })

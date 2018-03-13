@@ -18,6 +18,7 @@
   height: 100%;
   position: absolute;
   top: 104rpx;
+  z-index: 5;
 }
 
 .welfare_body {

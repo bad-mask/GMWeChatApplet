@@ -7,8 +7,8 @@ Page({
     items: [
       {
         type: 'radio',
-        label: 'Updated',
-        value: 'updated',
+        label: '全部地区',
+        value: '全部地区',
         children: [{
           label: 'Recently updated',
           value: 'desc',
@@ -21,16 +21,308 @@ Page({
         groups: ['001'],
       },
       {
-        type: 'text',
-        label: 'Forks',
-        value: 'forks',
+        type: 'radio',
+        label: '全部项目',
+        value: '全部项目',
         groups: ['002'],
       },
       {
-        type: 'sort',
-        label: 'Stars',
-        value: 'stars',
+        type: 'radio',
+        label: '智能推荐',
+        value: '智能推荐',
         groups: ['003'],
+      }
+    ],
+    areas:[
+      {
+        name:'全部地区',
+        id:'worldwide',
+        provinces:[
+          {
+            name: '全部地区',
+            id: 'worldwide',
+            cities:[
+              {
+                name: '全部城市',
+                id: 'worldwide',
+              },
+            ],
+          },
+          {
+            name: '安徽',
+            id: '262',
+            cities: [
+              {
+                name: '安徽全部',
+                id: '262',
+              },
+              {
+                name: '蚌埠',
+                id: '329',
+              },
+              {
+                name: '豪州',
+                id: '335',
+              },
+              {
+                name: '蚌埠',
+                id: '329',
+              },
+              {
+                name: '豪州',
+                id: '335',
+              },
+              {
+                name: '蚌埠',
+                id: '329',
+              },
+              {
+                name: '豪州',
+                id: '335',
+              },
+              {
+                name: '蚌埠',
+                id: '329',
+              },
+              {
+                name: '豪州',
+                id: '335',
+              },
+            ],
+          }
+        ],
+      },
+      {
+        name: '全部地区',
+        id: 'worldwide',
+        provinces: [
+          {
+            name: '全部地区',
+            id: 'worldwide',
+            cities: [
+              {
+                name: '全部城市',
+                id: 'worldwide',
+              },
+            ],
+          },
+          {
+            name: '安徽',
+            id: '262',
+            cities: [
+              {
+                name: '安徽全部',
+                id: '262',
+              },
+              {
+                name: '蚌埠',
+                id: '329',
+              },
+              {
+                name: '豪州',
+                id: '335',
+              },
+              {
+                name: '蚌埠',
+                id: '329',
+              },
+              {
+                name: '豪州',
+                id: '335',
+              },
+              {
+                name: '蚌埠',
+                id: '329',
+              },
+              {
+                name: '豪州',
+                id: '335',
+              },
+              {
+                name: '蚌埠',
+                id: '329',
+              },
+              {
+                name: '豪州',
+                id: '335',
+              },
+            ],
+          }
+        ],
+      },
+      {
+        name: '全部地区',
+        id: 'worldwide',
+        provinces: [
+          {
+            name: '全部地区',
+            id: 'worldwide',
+            cities: [
+              {
+                name: '全部城市',
+                id: 'worldwide',
+              },
+            ],
+          },
+          {
+            name: '安徽',
+            id: '262',
+            cities: [
+              {
+                name: '安徽全部',
+                id: '262',
+              },
+              {
+                name: '蚌埠',
+                id: '329',
+              },
+              {
+                name: '豪州',
+                id: '335',
+              },
+              {
+                name: '蚌埠',
+                id: '329',
+              },
+              {
+                name: '豪州',
+                id: '335',
+              },
+              {
+                name: '蚌埠',
+                id: '329',
+              },
+              {
+                name: '豪州',
+                id: '335',
+              },
+              {
+                name: '蚌埠',
+                id: '329',
+              },
+              {
+                name: '豪州',
+                id: '335',
+              },
+            ],
+          }
+        ],
+      },
+      {
+        name: '全部地区',
+        id: 'worldwide',
+        provinces: [
+          {
+            name: '全部地区',
+            id: 'worldwide',
+            cities: [
+              {
+                name: '全部城市',
+                id: 'worldwide',
+              },
+            ],
+          },
+          {
+            name: '安徽',
+            id: '262',
+            cities: [
+              {
+                name: '安徽全部',
+                id: '262',
+              },
+              {
+                name: '蚌埠',
+                id: '329',
+              },
+              {
+                name: '豪州',
+                id: '335',
+              },
+              {
+                name: '蚌埠',
+                id: '329',
+              },
+              {
+                name: '豪州',
+                id: '335',
+              },
+              {
+                name: '蚌埠',
+                id: '329',
+              },
+              {
+                name: '豪州',
+                id: '335',
+              },
+              {
+                name: '蚌埠',
+                id: '329',
+              },
+              {
+                name: '豪州',
+                id: '335',
+              },
+            ],
+          }
+        ],
+      },
+      {
+        name: '全部地区',
+        id: 'worldwide',
+        provinces: [
+          {
+            name: '全部地区',
+            id: 'worldwide',
+            cities: [
+              {
+                name: '全部城市',
+                id: 'worldwide',
+              },
+            ],
+          },
+          {
+            name: '安徽',
+            id: '262',
+            cities: [
+              {
+                name: '安徽全部',
+                id: '262',
+              },
+              {
+                name: '蚌埠',
+                id: '329',
+              },
+              {
+                name: '豪州',
+                id: '335',
+              },
+              {
+                name: '蚌埠',
+                id: '329',
+              },
+              {
+                name: '豪州',
+                id: '335',
+              },
+              {
+                name: '蚌埠',
+                id: '329',
+              },
+              {
+                name: '豪州',
+                id: '335',
+              },
+              {
+                name: '蚌埠',
+                id: '329',
+              },
+              {
+                name: '豪州',
+                id: '335',
+              },
+            ],
+          }
+        ],
       }
     ],
     type: `grid`,
