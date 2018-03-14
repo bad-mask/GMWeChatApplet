@@ -24,20 +24,38 @@
 
 
 
-  <block wx:for="{{ items }}" wx:key="">
+  <view class='filter_container'>
 
-      <view class="cells cells--pos" hidden="{{ !item.visible }}" wx:if="{{ item.type === 'radio' }}">
-        <radio-group name="{{ item.value }}" bindchange="{{ radioChange }}" data-index="{{ index }}" data-item="{{ item }}">
-          <label class="cell check_label" wx:for="{{ item.children }}" wx:for-item="p" wx:key="{{ item.value }}">
-            <radio class="check" value="{{ p.value }}" checked="{{ p.checked }}" />
-            <view class="cell_bd">{{ p.label }}</view>
-            <view class="cell_ft cell_ft--in-radio" wx:if="{{ p.checked }}">
-              <icon class="icon-radio" type="success_no_circle" size="16"></icon>
-            </view>
-          </label>
-        </radio-group>
+    <!-- 左侧栏 -->
+    <view class='filter_left'>
+      <block wx:for='{{areas}}' wx:for-item="areasItem" wx:key="">
+        <view data-index="{{index}}" class="filter_left_items  {{countryIndex == index  ? 'active' : ''}}" bindtap="{{clickLeftTab}}" data-id="{{areasItem.id}}">
+          <view>{{areasItem.name}}</view>
+        </view>
+      </block>
+    </view>
+
+    <!-- 中间栏 -->
+    <view class='filter_middle'>
+      <view wx:if="{{areas[countryIndex].provinces.length >= 0}}">
+        <block wx:for="{{areas[countryIndex].provinces}}" wx:for-item="provincesItem" wx:key="">
+          <view data-index="{{index}}" class="filter_middle_items   {{provinceIndex == index  ? 'active_province' : ''}}" bindtap="{{clickMiddleTab}}">
+            <view>{{provincesItem.name}}</view>
+          </view>
+        </block>
       </view>
+    </view>
 
-</block>
+    <!-- 右侧栏 -->
+    <view class='filter_right'>
+      <view wx:if="{{areas[countryIndex].provinces[provinceIndex].cities.length >= 0}}">
+        <block wx:for="{{areas[countryIndex].provinces[provinceIndex].cities}}" wx:for-item="citiesItem" wx:key="id">
+          <view data-index="{{index}}" class="filter_right_items   {{cityIndex == index  ? 'active_city' : ''}}" bindtap="{{clickRightTab}}">
+            <view>{{citiesItem.name}}</view>
+          </view>
+        </block>
+      </view>
+    </view>
+  </view>
 
 </template>

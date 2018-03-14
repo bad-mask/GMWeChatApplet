@@ -33,71 +33,16 @@ Page({
         groups: ['003'],
       }
     ],
-    areas:[
+    countryIndex: 0,
+    provinceIndex: 0,
+    cityIndex: 0,
+    areas: [
       {
-        name:'全部地区',
-        id:'worldwide',
-        provinces:[
-          {
-            name: '全部地区',
-            id: 'worldwide',
-            cities:[
-              {
-                name: '全部城市',
-                id: 'worldwide',
-              },
-            ],
-          },
-          {
-            name: '安徽',
-            id: '262',
-            cities: [
-              {
-                name: '安徽全部',
-                id: '262',
-              },
-              {
-                name: '蚌埠',
-                id: '329',
-              },
-              {
-                name: '豪州',
-                id: '335',
-              },
-              {
-                name: '蚌埠',
-                id: '329',
-              },
-              {
-                name: '豪州',
-                id: '335',
-              },
-              {
-                name: '蚌埠',
-                id: '329',
-              },
-              {
-                name: '豪州',
-                id: '335',
-              },
-              {
-                name: '蚌埠',
-                id: '329',
-              },
-              {
-                name: '豪州',
-                id: '335',
-              },
-            ],
-          }
-        ],
-      },
-      {
-        name: '全部地区',
+        name: '全部地区1',
         id: 'worldwide',
         provinces: [
           {
-            name: '全部地区',
+            name: '全部地区1',
             id: 'worldwide',
             cities: [
               {
@@ -151,11 +96,11 @@ Page({
         ],
       },
       {
-        name: '全部地区',
+        name: '全部地区2',
         id: 'worldwide',
         provinces: [
           {
-            name: '全部地区',
+            name: '全部地区2',
             id: 'worldwide',
             cities: [
               {
@@ -209,11 +154,11 @@ Page({
         ],
       },
       {
-        name: '全部地区',
+        name: '全部地区3',
         id: 'worldwide',
         provinces: [
           {
-            name: '全部地区',
+            name: '全部地区3',
             id: 'worldwide',
             cities: [
               {
@@ -267,11 +212,69 @@ Page({
         ],
       },
       {
-        name: '全部地区',
+        name: '全部地区4',
         id: 'worldwide',
         provinces: [
           {
-            name: '全部地区',
+            name: '全部地区4',
+            id: 'worldwide',
+            cities: [
+              {
+                name: '全部城市',
+                id: 'worldwide',
+              },
+            ],
+          },
+          {
+            name: '安徽',
+            id: '262',
+            cities: [
+              {
+                name: '安徽全部',
+                id: '262',
+              },
+              {
+                name: '蚌埠',
+                id: '329',
+              },
+              {
+                name: '豪州',
+                id: '335',
+              },
+              {
+                name: '蚌埠',
+                id: '329',
+              },
+              {
+                name: '豪州',
+                id: '335',
+              },
+              {
+                name: '蚌埠',
+                id: '329',
+              },
+              {
+                name: '豪州',
+                id: '335',
+              },
+              {
+                name: '蚌埠',
+                id: '329',
+              },
+              {
+                name: '豪州',
+                id: '335',
+              },
+            ],
+          }
+        ],
+      },
+      {
+        name: '全部地区5',
+        id: 'worldwide',
+        provinces: [
+          {
+            name: '全部地区5',
             id: 'worldwide',
             cities: [
               {
@@ -332,8 +335,7 @@ Page({
       service_img: 'http://hera.s.igengmei.com/service/2015/06/25/671cb7b167-half',
       gengmei_price: '3600',
       sell_amount: '已预约39',
-    },
-    {
+    }, {
       title: '【瘦脸针】小脸自拍无需耍心机，靠前也自信！',
       url: '/pages/backdrop/index',
       service_img: 'http://hera.s.igengmei.com/service/2015/04/23/5e3d19b169-half',
@@ -443,6 +445,10 @@ Page({
   onLoad: function () {
     this.$filterBar = $filterBar.init({
       items: this.data.items,
+      areas: this.data.areas,
+      countryIndex: this.data.countryIndex,
+      provinceIndex: this.data.provinceIndex,
+      cityIndex: this.data.cityIndex,
       onChange: (checkedItems, items) => {
         console.log(this, checkedItems, items)
 
@@ -457,8 +463,6 @@ Page({
             } else if (n.value === 'stars') {
               params.sort = n.value
               params.order = n.sort === 1 ? 'asc' : 'desc'
-            } else if (n.value === 'forks') {
-              params.sort = n.value
             } else if (n.value === 'filter') {
               n.children.filter((n) => n.selected).forEach((n) => {
                 if (n.value === 'language') {
@@ -471,10 +475,18 @@ Page({
               })
             }
           }
-        })
-
+        });
         this.getRepos(params)
       },
+
+      onChangeArea: (countryIndex, provinceIndex, cityIndex) => {
+        wx.showToast({
+          title: '点击了筛选器' + countryIndex + provinceIndex + cityIndex,
+          icon: 'none',
+          duration: 1000
+        })
+      }
+
     })
     this.getRepos()
   },
@@ -505,7 +517,6 @@ Page({
       },
     })
   },
-
   onSearchCom: function (e) {
     wx.showToast({
       title: '点击了搜索框',

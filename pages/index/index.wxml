@@ -12,7 +12,7 @@
   </view>
 
   <!-- 美购列表 -->
-  <view class='welfare_body'>
+   <view class='welfare_body'>
     <view class="grids grids-small" wx:if="{{ type === 'grid' }}">
       <block wx:for="{{components}}" wx:key="">
         <navigator url="{{item.url}}" class="grid">
@@ -35,6 +35,6 @@
         </navigator>
       </block>
     </view>
-  </view>
+  </view> 
 
 </view>
