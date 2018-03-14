@@ -24,12 +24,12 @@ export default {
          */
         onOpenSelect(index) {
           this.setData({
-            [`filterbar.areaVisible`]: false,
+            [`filterbar.barIndex`]: index,
           })
           this.page.data.filterbar.items.forEach((n, i) => {
-            if (index == 0 && this.page.data.filterbar.barIndex==index) {
+            if (index == 0) {
               this.setData({
-                [`filterbar.areaVisible`]: true,
+                [`filterbar.areaVisible`]: !this.page.data.filterbar.areaVisible,
               })
             } else {              
               if (this.page.data.filterbar.areaVisible) {
