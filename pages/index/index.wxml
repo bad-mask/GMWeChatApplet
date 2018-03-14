@@ -13,7 +13,7 @@
 
   <!-- 美购列表 -->
    <view class='welfare_body'>
-    <view class="grids grids-small" wx:if="{{ type === 'grid' }}">
+    <view class="grids grids-small">
       <block wx:for="{{components}}" wx:key="">
         <navigator url="{{item.url}}" class="grid">
 

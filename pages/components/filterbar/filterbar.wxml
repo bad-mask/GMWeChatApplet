@@ -1,7 +1,7 @@
 <!--pages/components/filterbar/filterbar.wxml-->
 <template name="filterWelBar">
 
-  <view class='filterbar {{ animateCss }}' wx:if="{{visible}}">
+  <view class="filterbar">
 
     <view class='filterbar_top_border'></view>
 
@@ -9,9 +9,9 @@
 
       <block wx:for="{{items}}" wx:key="">
 
-        <view class="filterbar_item {{item.checked ? 'filterbar_item--checked' : '' }}" bindtap='{{onClick}}' data-index='{{index}}'>
+        <view data-index='{{index}}' class="filterbar_item {{areaVisible && barIndex == index ? 'filterbar_item--checked' : '' }}" bindtap='{{onClick}}'>
           <text class='filterbar_text'>{{ item.label }}</text>
-          <text class="filterbar_icon  {{'filterbar_icon--' + item.type }}  {{ item.radio === 0 ? 'filterbar_icon--radio-asc' : item.radio === -1 ? 'filterbar_icon--radio-desc' : '' }}" wx:if="{{ item.type === 'radio' }}"></text>
+          <text class="filterbar_icon  {{'filterbar_icon--' + item.type }}  {{ item.radio === 0 ? 'filterbar_icon--radio-asc' : item.radio === -1 ? 'filterbar_icon--radio-desc' : '' }}"></text>
         </view>
 
       </block>
@@ -24,30 +24,30 @@
 
 
 
-  <view class='filter_container'>
+  <view class="filter_container {{ areaVisible ? 'area-visible' : 'area-gone' }}">
 
     <!-- 左侧栏 -->
-    <view class='filter_left'>
-      <block wx:for='{{areas}}' wx:for-item="areasItem" wx:key="">
+    <scroll-view scroll-y class='filter_left'>
+      <block wx:for='{{areas}}' wx:for-item="areasItem" wx:key="id">
         <view data-index="{{index}}" class="filter_left_items  {{countryIndex == index  ? 'active' : ''}}" bindtap="{{clickLeftTab}}" data-id="{{areasItem.id}}">
           <view>{{areasItem.name}}</view>
         </view>
       </block>
-    </view>
+    </scroll-view>
 
     <!-- 中间栏 -->
-    <view class='filter_middle'>
+    <scroll-view scroll-y class='filter_middle'>
       <view wx:if="{{areas[countryIndex].provinces.length >= 0}}">
-        <block wx:for="{{areas[countryIndex].provinces}}" wx:for-item="provincesItem" wx:key="">
+        <block wx:for="{{areas[countryIndex].provinces}}" wx:for-item="provincesItem" wx:key="id">
           <view data-index="{{index}}" class="filter_middle_items   {{provinceIndex == index  ? 'active_province' : ''}}" bindtap="{{clickMiddleTab}}">
             <view>{{provincesItem.name}}</view>
           </view>
         </block>
       </view>
-    </view>
+    </scroll-view>
 
     <!-- 右侧栏 -->
-    <view class='filter_right'>
+    <scroll-view scroll-y class='filter_right'>
       <view wx:if="{{areas[countryIndex].provinces[provinceIndex].cities.length >= 0}}">
         <block wx:for="{{areas[countryIndex].provinces[provinceIndex].cities}}" wx:for-item="citiesItem" wx:key="id">
           <view data-index="{{index}}" class="filter_right_items   {{cityIndex == index  ? 'active_city' : ''}}" bindtap="{{clickRightTab}}">
@@ -55,7 +55,7 @@
           </view>
         </block>
       </view>
-    </view>
+    </scroll-view>
   </view>
 
 </template>

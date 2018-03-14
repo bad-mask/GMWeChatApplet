@@ -122,30 +122,6 @@ class Component {
     }
     return !0
   }
-
-  /**
-   * 设置元素显示
-   */
-  setVisible(className = `fade-in`) {
-    this.setData({
-      [`${this.options.scope}.animateCss`]: className,
-      [`${this.options.scope}.visible`]: !0,
-    })
-  }
-
-  /**
-   * 设置元素隐藏
-   */
-  setHidden(className = `fade-out`, timer = 300) {
-    this.setData({
-      [`${this.options.scope}.animateCss`]: className,
-    })
-    setTimeout(() => {
-      this.setData({
-        [`${this.options.scope}.visible`]: !1,
-      })
-    }, timer)
-  }
 }
 
 /**
